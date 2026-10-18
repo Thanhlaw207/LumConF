@@ -35,7 +35,7 @@ class dangnhap : AppCompatActivity() {
                 Toast.makeText(this, "Dang nhap thanh cong! Xin chao ${user.hoTen}", Toast.LENGTH_SHORT).show()
 
                 // Chuyen sang MainActivity (Man hinh chinh)
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, activity_main_khach_hang::class.java)
                 startActivity(intent)
                 finish() // Dong man hinh dang nhap
             } else {

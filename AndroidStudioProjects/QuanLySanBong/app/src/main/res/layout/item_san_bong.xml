@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="3dp"
+    app:strokeWidth="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:gravity="center_vertical">
+
+        <!-- Ảnh minh họa sân bóng -->
+        <ImageView
+            android:id="@+id/ivHinhAnhSan"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:scaleType="centerCrop"
+            android:src="@android:drawable/ic_menu_gallery"
+            android:background="#E0E0E0" />
+
+        <!-- Thông tin chi tiết -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="12dp">
+
+            <TextView
+                android:id="@+id/tvTenSan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sân Bóng Cỏ Nhân Tạo A1"
+                android:textColor="#212121"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvLoaiSan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Loại: Sân 7 người"
+                android:textColor="#757575"
+                android:textSize="13sp"
+                android:layout_marginTop="2dp" />
+
+            <TextView
+                android:id="@+id/tvGiaThue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="250,000 VNĐ / giờ"
+                android:textColor="#1E88E5"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginTop="6dp" />
+        </LinearLayout>
+
+        <!-- Nút Đặt sân -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDatSan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đặt sân"
+            android:textSize="12sp"
+            app:cornerRadius="8dp"
+            android:backgroundTint="#4CAF50" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

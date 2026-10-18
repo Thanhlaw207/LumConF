@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuanLySanBong">
 
-        <!-- Man hinh Dang nhap (Dat lam man hinh khoi chay dau tien) -->
+        <!-- Màn hình Đăng nhập (Mở đầu tiên khi khởi chạy app) -->
         <activity
             android:name=".dangnhap"
             android:exported="true">
@@ -22,15 +22,20 @@
             </intent-filter>
         </activity>
 
-        <!-- Man hinh Dang ky -->
+        <!-- Màn hình Trang chủ Khách hàng -->
+        <activity
+            android:name=".activity_main_khach_hang"
+            android:exported="false" />
+
+        <!-- Màn hình Đăng ký tài khoản -->
         <activity
             android:name=".dangky"
-            android:exported="true" />
+            android:exported="false" />
 
-        <!-- Man hinh chinh (Sau khi dang nhap thanh cong moi vao) -->
+        <!-- Màn hình MainActivity cũ -->
         <activity
             android:name=".MainActivity"
-            android:exported="true" />
+            android:exported="false" />
 
     </application>
 
