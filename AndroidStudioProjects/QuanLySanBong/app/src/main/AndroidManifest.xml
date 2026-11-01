@@ -22,6 +22,11 @@
             </intent-filter>
         </activity>
 
+        <!-- Màn hình Trang chủ Chủ sân -->
+        <activity
+            android:name=".activity_main_chu_san"
+            android:exported="false" />
+
         <!-- Màn hình Trang chủ Khách hàng -->
         <activity
             android:name=".activity_main_khach_hang"

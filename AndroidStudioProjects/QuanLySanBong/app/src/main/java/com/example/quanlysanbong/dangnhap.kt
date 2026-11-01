@@ -1,3 +1,4 @@
+
 package com.example.quanlysanbong
 
 import android.content.Intent
@@ -18,35 +19,79 @@ class dangnhap : AppCompatActivity() {
         val etTaiKhoan = findViewById<EditText>(R.id.etTaiKhoan)
         val etMatKhau = findViewById<EditText>(R.id.etMatKhau)
         val btnDangNhap = findViewById<Button>(R.id.btnDangNhap)
-        val tvChuyenSangDangKy = findViewById<TextView>(R.id.tvChuyenSangDangKy)
+        val tvDangKy =
+            findViewById<TextView>(R.id.tvChuyenSangDangKy)
 
-        // Xu ly nut Dang nhap
         btnDangNhap.setOnClickListener {
+
             val taiKhoan = etTaiKhoan.text.toString().trim()
             val matKhau = etMatKhau.text.toString().trim()
 
             if (taiKhoan.isEmpty() || matKhau.isEmpty()) {
-                Toast.makeText(this, "Vui long nhap tai khoan va mat khau!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "Vui lòng nhập tài khoản và mật khẩu",
+                    Toast.LENGTH_SHORT
+                ).show()
                 return@setOnClickListener
             }
 
             val user = dbHelper.dangNhap(taiKhoan, matKhau)
-            if (user != null) {
-                Toast.makeText(this, "Dang nhap thanh cong! Xin chao ${user.hoTen}", Toast.LENGTH_SHORT).show()
 
+<<<<<<< HEAD
                 // Chuyen sang MainActivity (Man hinh chinh)
                 val intent = Intent(this, activity_main_khach_hang::class.java)
+=======
+            if (user != null) {
+
+                val intent = when (user.vaiTro) {
+                    "CHU_SAN" -> Intent(
+                        this,
+                        activity_main_chu_san::class.java
+                    )
+
+                    "KHACH_HANG" -> Intent(
+                        this,
+                        activity_main_khach_hang::class.java
+                    )
+
+                    else -> {
+                        Toast.makeText(
+                            this,
+                            "Vai trò tài khoản không hợp lệ",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        return@setOnClickListener
+                    }
+                }
+
+                // Chủ sân và khách hàng dùng đúng ID tài khoản
+                intent.putExtra("USER_ID", user.id)
+                intent.putExtra("KHACH_HANG_ID", user.id)
+
+                Toast.makeText(
+                    this,
+                    "Đăng nhập thành công",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+>>>>>>> 2c239c1 (Cap nhat tinh nang quan ly dat san va lich su)
                 startActivity(intent)
-                finish() // Dong man hinh dang nhap
+                finish()
+
             } else {
-                Toast.makeText(this, "Tai khoan hoac mat khau khong chinh xac!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "Tài khoản hoặc mật khẩu không chính xác",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
 
-        // Chuyen sang man hinh Dang ky khi bam vao Text
-        tvChuyenSangDangKy.setOnClickListener {
-            val intent = Intent(this, dangky::class.java)
-            startActivity(intent)
+        tvDangKy.setOnClickListener {
+            startActivity(
+                Intent(this, dangky::class.java)
+            )
         }
     }
 }
