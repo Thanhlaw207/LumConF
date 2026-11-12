@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Cập nhật thông tin sân bóng"
+        android:textColor="#1565C0"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <!-- Tên sân bóng -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tên sân bóng:"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/edtTenSanSua"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:hint="Nhập tên sân (VD: Sân A1)"
+        android:inputType="textPersonName" />
+
+    <!-- Loại sân -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Loại sân:"
+        android:textStyle="bold" />
+
+    <Spinner
+        android:id="@+id/spnLoaiSanSua"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginBottom="12dp"
+        android:entries="@array/loai_san_array" />
+
+    <!-- Giá thuê -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Giá thuê (VNĐ/giờ):"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/edtGiaThueSua"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:hint="Nhập giá thuê"
+        android:inputType="numberDecimal" />
+
+    <!-- Trạng thái sân -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Trạng thái sân:"
+        android:textStyle="bold" />
+
+    <Spinner
+        android:id="@+id/spnTrangThaiSua"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginBottom="16dp"
+        android:entries="@array/trang_thai_san_array" />
+
+</LinearLayout>
