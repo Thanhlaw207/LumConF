@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sn_app_name">Sân Nhà</string>
+    <color name="sn_white">#FFFFFF</color>
+    <color name="sn_green">#148549</color>
+    <color name="sn_dark">#172F26</color>
+    <color name="sn_muted">#72837B</color>
+    <color name="sn_line">#DDE5E0</color>
+    <color name="sn_surface">#F6F9F7</color>
+    <color name="sn_mint">#EAF6EE</color>
+    <style name="Theme.SanNha" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/sn_green</item>
+        <item name="colorOnPrimary">@color/sn_white</item>
+        <item name="colorSecondary">@color/sn_green</item>
+        <item name="android:colorAccent">@color/sn_green</item>
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:windowBackground">@color/sn_white</item>
+        <item name="android:statusBarColor">@color/sn_white</item>
+        <item name="android:navigationBarColor">@color/sn_white</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+    </style>
+</resources>
