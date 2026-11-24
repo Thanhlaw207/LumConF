@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="loai_san_array">
+        <item>Sân 5 người</item>
+        <item>Sân 7 người</item>
+        <item>Sân 11 người</item>
+    </string-array>
+    <string-array name="trang_thai_san_array">
+        <item>Trống</item>
+        <item>Đang đá</item>
+        <item>Bảo trì</item>
+    </string-array>
+</resources>

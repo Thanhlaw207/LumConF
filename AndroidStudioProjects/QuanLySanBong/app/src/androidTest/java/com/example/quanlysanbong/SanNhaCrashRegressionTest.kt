@@ -45,9 +45,9 @@ class SanNhaCrashRegressionTest {
         for (oldVersion in 3..5) {
             SQLiteDatabase.create(null).use { db ->
                 DatabaseHelper(context).use { helper ->
+                    db.execSQL("CREATE TABLE SanBong (id INTEGER PRIMARY KEY, tenSan TEXT)")
                     helper.onCreate(db)
                     db.execSQL("INSERT INTO NguoiDung (taiKhoan, hoTen) VALUES ('migration-test', 'Saved account')")
-                    db.execSQL("CREATE TABLE SanBong (id INTEGER PRIMARY KEY, tenSan TEXT)")
                     db.execSQL("INSERT INTO SanBong VALUES (1, 'Saved pitch')")
                     helper.onUpgrade(db, oldVersion, 6)
                     db.rawQuery("SELECT hoTen FROM NguoiDung WHERE taiKhoan = 'migration-test'", null).use {
@@ -58,6 +58,28 @@ class SanNhaCrashRegressionTest {
                         assertTrue(it.moveToFirst())
                         assertEquals("Saved pitch", it.getString(0))
                     }
+                }
+            }
+        }
+    }
+
+    @Test
+    fun upgradingAccountOnlyDatabaseCreatesPitchTable() {
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+        SQLiteDatabase.create(null).use { db ->
+            db.execSQL("CREATE TABLE NguoiDung (id INTEGER PRIMARY KEY, taiKhoan TEXT)")
+            db.execSQL("INSERT INTO NguoiDung VALUES (1, 'saved-account')")
+            DatabaseHelper(context).use { helper ->
+                helper.onUpgrade(db, 5, 6)
+                helper.onCreate(db)
+                db.execSQL("INSERT INTO SanBong (tenSan, loaiSan, giaThue, trangThai, chuSanId) VALUES ('Pitch', '5', 100000, 'Available', 1)")
+                db.rawQuery("SELECT taiKhoan FROM NguoiDung WHERE id = 1", null).use {
+                    assertTrue(it.moveToFirst())
+                    assertEquals("saved-account", it.getString(0))
+                }
+                db.rawQuery("SELECT tenSan FROM SanBong", null).use {
+                    assertTrue(it.moveToFirst())
+                    assertEquals("Pitch", it.getString(0))
                 }
             }
         }
