@@ -9,8 +9,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
     companion object {
         private const val DATABASE_NAME = "QuanLySanBong.db"
-        // Versions 3-5 already exist on devices; keep upgrades forward-only.
-        private const val DATABASE_VERSION = 6
+        private const val DATABASE_VERSION = 3 // Tang version len 3 de cap nhat lai bang NguoiDung
 
         // Bang NguoiDung
         const val TABLE_NGUOI_DUNG = "NguoiDung"
@@ -23,7 +22,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
-        val createTableNguoiDung = ("CREATE TABLE IF NOT EXISTS " + TABLE_NGUOI_DUNG + "("
+        val createTableNguoiDung = ("CREATE TABLE " + TABLE_NGUOI_DUNG + "("
                 + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + COLUMN_TAI_KHOAN + " TEXT UNIQUE,"
                 + COLUMN_MAT_KHAU + " TEXT,"
@@ -34,8 +33,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        // The account schema is unchanged in versions 3-5. Preserve existing rows
-        // and any other tables left by earlier app versions.
+        db?.execSQL("DROP TABLE IF EXISTS $TABLE_NGUOI_DUNG")
         onCreate(db)
     }
 

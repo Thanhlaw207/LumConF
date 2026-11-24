@@ -34,8 +34,15 @@ class dangnhap : AppCompatActivity() {
             if (user != null) {
                 Toast.makeText(this, "Dang nhap thanh cong! Xin chao ${user.hoTen}", Toast.LENGTH_SHORT).show()
 
-                // Chuyen sang MainActivity (Man hinh chinh)
-                val intent = Intent(this, activity_main_khach_hang::class.java)
+                // PHÂN QUYỀN ĐIỀU HƯỚNG MÀN HÌNH
+                val intent = if (user.vaiTro == "CHU_SAN") {
+                    // Nếu là chủ sân -> Mở giao diện Quản lý của Chủ sân
+                    Intent(this, activity_main_chu_san::class.java)
+                } else {
+                    // Mặc định hoặc KHACH_HANG -> Mở giao diện Khách hàng
+                    Intent(this, activity_main_khach_hang::class.java)
+                }
+
                 startActivity(intent)
                 finish() // Dong man hinh dang nhap
             } else {
