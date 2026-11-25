@@ -9,7 +9,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
     companion object {
         private const val DATABASE_NAME = "QuanLySanBong.db"
-        private const val DATABASE_VERSION = 4 // Tăng version lên 4 để thêm bảng SanBong
+        private const val DATABASE_VERSION = 6
 
         // Bảng NguoiDung
         const val TABLE_NGUOI_DUNG = "NguoiDung"
@@ -31,7 +31,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
-        val createTableNguoiDung = ("CREATE TABLE " + TABLE_NGUOI_DUNG + "("
+        val createTableNguoiDung = ("CREATE TABLE IF NOT EXISTS " + TABLE_NGUOI_DUNG + "("
                 + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + COLUMN_TAI_KHOAN + " TEXT UNIQUE,"
                 + COLUMN_MAT_KHAU + " TEXT,"
@@ -40,7 +40,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 + COLUMN_VAI_TRO + " TEXT" + ")")
         db?.execSQL(createTableNguoiDung)
 
-        val createTableSanBong = ("CREATE TABLE " + TABLE_SAN_BONG + "("
+        val createTableSanBong = ("CREATE TABLE IF NOT EXISTS " + TABLE_SAN_BONG + "("
                 + COLUMN_SAN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + COLUMN_TEN_SAN + " TEXT,"
                 + COLUMN_LOAI_SAN + " TEXT,"
@@ -51,8 +51,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        db?.execSQL("DROP TABLE IF EXISTS $TABLE_NGUOI_DUNG")
-        db?.execSQL("DROP TABLE IF EXISTS $TABLE_SAN_BONG")
+        // Preserve accounts and pitches when upgrading existing installations.
         onCreate(db)
     }
 

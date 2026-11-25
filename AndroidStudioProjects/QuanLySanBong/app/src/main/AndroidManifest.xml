@@ -7,14 +7,16 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="@string/sn_app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuanLySanBong">
 
         <!-- Màn hình Đăng nhập (Mở đầu tiên khi khởi chạy app) -->
         <activity
-            android:name=".dangnhap"
+            android:name=".SanNhaActivity"
+            android:theme="@style/Theme.SanNha"
+            android:windowSoftInputMode="adjustResize"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,6 +30,7 @@
             android:exported="false" />
 
         <!-- Màn hình Trang chủ Khách hàng -->
+        <activity android:name=".dangnhap" android:exported="false" />
         <activity
             android:name=".activity_main_khach_hang"
             android:exported="false" />
